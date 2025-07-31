@@ -1,5 +1,5 @@
 ---
-- name: Check current CPU usage
+- name: Check the current CPU usage 
   hosts: all
   tasks:
 
