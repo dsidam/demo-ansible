@@ -21,4 +21,5 @@
         mode: '0755'
 
     - name: Execute the shell script
-      ansible.builtin.shell: /home/dsidam/images/run_app.sh
+      ansible.builtin.command: /home/dsidam/images/run_app.sh
+      changed_when: true
