@@ -4,21 +4,21 @@
   tasks:
 
     - name: Ensure docker
-      package:
+      ansible.builtin.package:
         name: docker
         state: present
 
     - name: Start docker service
-      service:
+      ansible.builtin.service:
         name: docker
-        state: started 
+        state: started
         enabled: true
-    
+
     - name: Copy shell script to target
-      copy:
+      ansible.builtin.copy:
         src: /home/dsidam/run_app.sh
         dest: /home/dsidam/images/run_app.sh
         mode: '0755'
-    
+
     - name: Execute the shell script
       ansible.builtin.shell: /home/dsidam/images/run_app.sh
