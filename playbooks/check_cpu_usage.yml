@@ -4,8 +4,11 @@
   tasks:
 
     - name: Get current CPU usage percentage
-      ansible.builtin.shell: top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8 "%"}'
+      ansible.builtin.shell: |
+        set -o pipefail
+        top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8 "%"}'
       register: cpu_usage
+      changed_when: false
 
     - name: Show CPU usage
       ansible.builtin.debug:
